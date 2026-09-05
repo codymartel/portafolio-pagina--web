@@ -1,32 +1,53 @@
-# React + TypeScript + Vite
+# Mi Portafolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portafolio personal construido con React, TypeScript y Vite. Muestra proyectos mediante componentes reutilizables y prepara la futura integración de Yavi, un asistente de IA para navegar el sitio.
 
-Currently, two official plugins are available:
+## Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- TypeScript
+- Vite
+- Oxlint
 
-## React Compiler
+## Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 20 o superior
+- npm
 
-## Expanding the Oxlint configuration
+## Desarrollo local
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+La aplicación estará disponible en la dirección mostrada por Vite, normalmente `http://localhost:5173`.
+
+## Scripts
+
+| Comando | Descripción |
+| --- | --- |
+| `npm run dev` | Inicia el servidor de desarrollo. |
+| `npm run build` | Comprueba TypeScript y genera la versión de producción. |
+| `npm run lint` | Ejecuta el análisis estático con Oxlint. |
+| `npm run preview` | Sirve localmente la compilación de producción. |
+
+## Estructura
+
+```text
+src/
+  components/  Componentes de interfaz
+  data/        Datos estáticos de los proyectos
+  hooks/       Hooks de React
+  services/    Servicios e integraciones externas
+```
+
+## Yavi y seguridad
+
+Yavi está planificado como un asistente de IA. La conexión con el proveedor se implementará mediante un backend intermediario; no hay una integración de API activa todavía.
+
+- Las claves del proveedor de IA deben existir solo en variables de entorno del servidor.
+- Nunca subas archivos `.env`, claves, tokens, contraseñas ni historiales de sesión a GitHub.
+- Cuando se implemente, cada acción solicitada por Yavi se validará contra una lista cerrada antes de ejecutarse.
+
+La configuración de desarrollo del agente se encuentra en `.opencode/agents/backend-conexion.md`. Es documentación de trabajo y no se ejecuta en el sitio publicado.
